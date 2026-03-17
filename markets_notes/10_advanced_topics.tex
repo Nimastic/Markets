@@ -1,0 +1,220 @@
+% ============================================================
+%  MODULE X — Advanced Topics & Next Steps
+% ============================================================
+
+\chapter{Advanced Topics \& Next Steps}
+
+\begin{notebox}
+This module introduces areas to explore as you develop mastery of the foundations.
+Each topic below is a deep discipline in its own right. Treat these as
+signposts for your learning roadmap, not immediate requirements.
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{Options — The Basics}
+
+An \textbf{option} is a contract giving the holder the \textbf{right, but not the obligation},
+to buy or sell an asset at a specified \textbf{strike price} by or on the \textbf{expiration date}.
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{2.5cm} p{7.5cm}}
+\toprule
+Type & Position & Rights and Risk \\
+\midrule
+Call & Long & Right to \emph{buy} at strike. Profit if price rises above strike + premium. \\
+Call & Short & Obligation to \emph{sell} at strike. Limited profit (premium), unlimited risk. \\
+Put & Long & Right to \emph{sell} at strike. Profit if price falls below strike + premium. \\
+Put & Short & Obligation to \emph{buy} at strike. Limited profit (premium), large downside. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{The Greeks}
+Options price sensitivity measures:
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{2cm} p{10.5cm}}
+\toprule
+Greek & What It Measures \\
+\midrule
+Delta ($\Delta$) & Change in option price per \$1 change in underlying. Ranges 0--1 (calls), 0 to $-$1 (puts). \\
+Gamma ($\Gamma$) & Rate of change of Delta. High near expiration. \\
+Theta ($\Theta$) & Time decay. Options lose value as expiration approaches. \\
+Vega ($\mathcal{V}$) & Sensitivity to changes in implied volatility. \\
+Rho ($\rho$) & Sensitivity to interest rate changes. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Basic Strategies}
+\begin{itemize}
+  \item \textbf{Covered Call} — own stock + sell call = generate income, cap upside
+  \item \textbf{Protective Put} — own stock + buy put = insure downside
+  \item \textbf{Straddle} — buy call + buy put at same strike = profit from big move either way
+  \item \textbf{Vertical Spread} — buy one option + sell another at different strike = defined risk/reward
+\end{itemize}
+
+\warningbox{Options involve leverage and time decay. Short options have unlimited or very large
+risk. Understand all mechanics before trading with real capital.}
+
+% ────────────────────────────────────────────────────────────
+\section{Futures Contracts}
+
+A \textbf{futures contract} is a \textbf{standardised agreement} to buy or sell an asset
+at a predetermined price on a specific future date.
+
+Uses:
+\begin{itemize}
+  \item \textbf{Hedging} — lock in a price (e.g., airline hedging jet fuel)
+  \item \textbf{Speculation} — directional bets with leverage
+  \item \textbf{Arbitrage} — exploit price discrepancies between spot and futures
+\end{itemize}
+
+Key futures markets: \textbf{equity index} (S\&P 500 /ES, NASDAQ /NQ),
+\textbf{bond} (US Treasury /ZB, /ZN), \textbf{energy} (Crude /CL, Natural Gas /NG),
+\textbf{metals} (Gold /GC, Silver /SI), \textbf{currencies} (/6E, /6J).
+
+\subsection{Contango and Backwardation}
+\begin{itemize}
+  \item \textbf{Contango}: Futures price $>$ spot price. Normal for storage-cost commodities.
+        Rolling long positions forward incurs a cost.
+  \item \textbf{Backwardation}: Futures price $<$ spot price. Indicates supply tightness.
+        Rolling forward generates a positive roll yield.
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────
+\section{Quantitative and Algorithmic Trading}
+
+\subsection{Systematic vs. Discretionary}
+\begin{itemize}
+  \item \textbf{Discretionary} — human makes all trading decisions. Can incorporate
+        qualitative/contextual reasoning.
+  \item \textbf{Systematic} — rules-based; computer executes all trades. Removes emotion.
+        Requires robust backtesting and forward testing.
+\end{itemize}
+
+\subsection{Strategy Development Process}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item \textbf{Hypothesis} — define the edge you believe exists and why it should persist.
+  \item \textbf{Data collection} — quality historical data is non-negotiable.
+  \item \textbf{Backtest} — simulate strategy on historical data. Watch for overfitting.
+  \item \textbf{Walk-forward test} — test on data not used in development (out-of-sample).
+  \item \textbf{Paper trading} — simulate live with real-time data, no real money.
+  \item \textbf{Live trading (small size)} — deploy with minimal capital first.
+  \item \textbf{Scale} — increase size only after demonstrable live performance.
+\end{enumerate}
+
+\begin{warningbox}
+\textbf{Overfitting} is the cardinal sin of backtesting: a strategy that perfectly fits
+historical data but fails on new data. The more parameters you optimise, the more you
+risk fitting noise. Always hold out out-of-sample data for validation.
+\end{warningbox}
+
+\subsection{Common Quant Strategies}
+\begin{itemize}
+  \item \textbf{Momentum} — buy winners, short losers over 3--12 month lookbacks
+  \item \textbf{Mean reversion} — bet on extreme deviations reverting to the mean
+  \item \textbf{Statistical arbitrage (stat-arb)} — pairs or basket mean reversion
+  \item \textbf{Trend following} — CTA style; long trending assets across all classes
+  \item \textbf{Factor investing} — exposure to value, quality, size, low-volatility factors
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────
+\section{Behavioural Finance}
+
+\begin{keyterm}{Behavioural Finance}
+The study of how cognitive biases and emotional responses cause investors to make
+irrational decisions, leading to systematic market mispricings.
+\end{keyterm}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{4cm} p{9cm}}
+\toprule
+Bias & Description \\
+\midrule
+Loss Aversion & Losses feel roughly $2\times$ worse than equivalent gains feel good \\
+Overconfidence & Overestimating one's predictive accuracy and skill \\
+Anchoring & Over-relying on the first piece of information seen (e.g., purchase price) \\
+Recency Bias & Overweighting recent events; extrapolating the current trend \\
+Herd Behaviour & Following the crowd; contributing to bubbles and crashes \\
+Disposition Effect & Holding losers too long, selling winners too early \\
+Sunk Cost Fallacy & Holding a bad investment to ``get back to even'' \\
+Narrative Fallacy & Constructing plausible stories to explain random price moves \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ────────────────────────────────────────────────────────────
+\section{Recommended Learning Roadmap}
+
+\subsection{Beginner (Months 1--3)}
+\begin{itemize}[noitemsep]
+  \item Complete this entire notes document
+  \item Read: \textit{The Intelligent Investor} — Benjamin Graham
+  \item Read: \textit{A Random Walk Down Wall Street} — Burton Malkiel
+  \item Open a \textbf{paper trading account} (Interactive Brokers, Thinkorswim)
+  \item Study and annotate 100 historical charts
+\end{itemize}
+
+\subsection{Intermediate (Months 4--9)}
+\begin{itemize}[noitemsep]
+  \item Read: \textit{Market Wizards} — Jack Schwager
+  \item Read: \textit{Trading in the Zone} — Mark Douglas (psychology)
+  \item Read: \textit{Technical Analysis of the Financial Markets} — John Murphy
+  \item Develop and paper trade a \emph{single, well-defined} strategy for 3 months minimum
+  \item Begin tracking trades in a \textbf{trading journal}
+\end{itemize}
+
+\subsection{Advanced (Month 10+)}
+\begin{itemize}[noitemsep]
+  \item Trade live, minimum size; focus on process, not P\&L
+  \item Read: \textit{Reminiscences of a Stock Operator} — Edwin Lefèvre
+  \item Study options via tastytrade or Options Education (CBOE)
+  \item Explore macro with: \textit{The Alchemy of Finance} — George Soros
+  \item Consider Python for backtesting: \texttt{pandas}, \texttt{vectorbt}, \texttt{backtrader}
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────
+\section{Essential Tools and Resources}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3.5cm} p{3cm} p{6.5cm}}
+\toprule
+Tool & Category & Use Case \\
+\midrule
+TradingView & Charting & Best charting platform; scripting via Pine Script \\
+Interactive Brokers & Broker & Best for serious traders; global access, low fees \\
+Bloomberg Terminal & Data/News & Institutional standard (expensive); use free alternatives \\
+Yahoo Finance & Data & Free fundamental data and price history \\
+EDGAR (SEC) & Filings & Official source for US company filings \\
+Finviz & Screener & Stock screening by technical and fundamental filters \\
+Quandl / FRED & Economic Data & Macro and economic time series data \\
+Python / R & Quant & Backtesting, data analysis, strategy automation \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ────────────────────────────────────────────────────────────
+\section{Final Principles to Internalise}
+
+\begin{enumerate}[label=\textbf{\Roman*.}]
+  \item \textbf{Capital preservation first}. You cannot profit if you blow up.
+  \item \textbf{Process over outcome}. A losing trade within your rules is fine.
+        A winning trade outside your rules is dangerous.
+  \item \textbf{The market is always right}. Your opinion is irrelevant; price is fact.
+  \item \textbf{Cut losers, let winners run}. This is the opposite of what emotions dictate.
+  \item \textbf{There is no holy grail}. Any edge erodes over time; keep learning.
+  \item \textbf{Consistency beats brilliance}. A 60\% win rate with 2:1 RRR,
+        repeated 1{,}000 times, compounds to large wealth.
+  \item \textbf{Know your edge}. If you cannot articulate why your strategy works,
+        you do not have one.
+  \item \textbf{Keep a trading journal}. The data in your own trade history is the
+        most valuable dataset you will ever have.
+\end{enumerate}
+
+\vspace{2em}
+\begin{tcolorbox}[colback=lightblue, colframe=darkblue]
+\centering
+\textbf{``The goal of a successful trader is to make the best trades.\\
+Money is secondary.''} — Alexander Elder
+\end{tcolorbox}

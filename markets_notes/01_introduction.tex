@@ -1,0 +1,174 @@
+% ============================================================
+%  MODULE I — Introduction to Financial Markets
+% ============================================================
+
+\chapter{Introduction to Financial Markets}
+
+\begin{notebox}
+This module builds the conceptual foundation. Every advanced topic later — options pricing,
+order flow, macro positioning — assumes fluency with what is covered here.
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{What Are Financial Markets?}
+
+A \textbf{financial market} is any organised or informal system in which buyers and sellers
+exchange financial instruments — assets that represent a claim on future cash flows, ownership,
+or contractual rights.
+
+Markets exist to solve two universal problems:
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item \textbf{Capital allocation} — directing money from those who have it (savers, investors)
+        to those who need it (companies, governments, individuals).
+  \item \textbf{Price discovery} — aggregating dispersed, private information from millions of
+        participants into a single observable price.
+\end{enumerate}
+
+\begin{keyterm}{Financial Instrument}
+Any contract that creates a financial asset for one party and a financial liability (or equity)
+for another. Examples: shares, bonds, futures contracts, options, currencies, loans.
+\end{keyterm}
+
+% ────────────────────────────────────────────────────────────
+\section{The Market Hierarchy}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{4cm} p{9cm}}
+\toprule
+Market & What Trades Here \\
+\midrule
+Equity Markets & Ownership stakes (shares/stocks) in companies \\
+Debt / Bond Markets & Loans to governments and corporations \\
+Money Markets & Very short-term debt (\textless 1 year); cash equivalents \\
+Foreign Exchange (FX) & Currency pairs \\
+Commodity Markets & Physical goods: oil, gold, wheat, etc. \\
+Derivatives Markets & Contracts derived from underlying assets (futures, options, swaps) \\
+Crypto Markets & Digital/cryptographic assets \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{notebox}
+These markets are deeply interconnected. A rising dollar (\$) usually pressures commodity prices
+(they are dollar-denominated). Rising interest rates affect stock valuations via the discount rate.
+You will not understand equities fully without at minimum a passing knowledge of rates and FX.
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{Primary vs. Secondary Markets}
+
+\begin{keyterm}{Primary Market}
+Where new securities are \emph{created and sold for the first time}.
+A company doing an IPO (Initial Public Offering) is selling shares in the primary market.
+Proceeds go \textbf{to the issuer}.
+\end{keyterm}
+
+\begin{keyterm}{Secondary Market}
+Where previously issued securities are \emph{traded between investors}.
+When you buy Apple stock on the NYSE, you are buying from another investor in the secondary market.
+Proceeds go \textbf{to the seller}, not to Apple.
+\end{keyterm}
+
+This distinction matters: most people operate entirely in secondary markets, yet it is primary
+market activity (IPOs, bond issuance) that directly funds the real economy.
+
+% ────────────────────────────────────────────────────────────
+\section{Why Prices Move}
+
+Price is determined by \textbf{supply and demand}. In financial markets, that comes down to:
+
+\begin{itemize}
+  \item \textbf{Expectations} — prices are forward-looking. A stock represents the present value
+        of all future cash flows, not current earnings alone.
+  \item \textbf{New information} — earnings beats, central bank decisions, geopolitical shocks
+        cause participants to re-assess expected future cash flows.
+  \item \textbf{Sentiment and positioning} — markets overshoot fair value regularly because humans
+        are emotional. Fear and greed are real forces.
+  \item \textbf{Liquidity} — thin markets move more violently on the same information than deep ones.
+\end{itemize}
+
+\begin{keyterm}{Efficient Market Hypothesis (EMH)}
+The theory that asset prices \emph{fully reflect all available information} at any given moment,
+making it impossible to consistently outperform the market through skill alone.
+There are three forms: \textbf{weak} (prices reflect past prices), \textbf{semi-strong}
+(prices reflect all public information), and \textbf{strong} (prices reflect all information
+including insider knowledge). Widely debated — practical traders generally reject strong form.
+\end{keyterm}
+
+% ────────────────────────────────────────────────────────────
+\section{Return and Risk — The Foundational Trade-off}
+
+\begin{formulabox}
+\[
+  \text{Return} = \frac{P_1 - P_0 + D}{P_0}
+\]
+where $P_0$ = entry price, $P_1$ = exit price, $D$ = dividends (or other income received).
+\end{formulabox}
+
+Every additional unit of expected return requires accepting additional risk. This is the
+\textbf{risk-return trade-off} — the single most important idea in all of finance.
+
+Common risk types:
+\begin{itemize}
+  \item \textbf{Market risk} (systematic) — risk from broad market moves; cannot be diversified away.
+  \item \textbf{Idiosyncratic risk} (unsystematic) — company-specific risk; can be reduced by diversification.
+  \item \textbf{Liquidity risk} — inability to exit a position at the desired price.
+  \item \textbf{Credit risk} — the counterparty may default.
+  \item \textbf{Inflation risk} — real returns eroded by price level increases.
+  \item \textbf{Tail risk} — low-probability, very high-impact events (black swans).
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────
+\section{Time Value of Money}
+
+This is the mathematical backbone of valuation.
+
+\begin{formulabox}
+\textbf{Future Value:}
+\[
+  FV = PV \times (1 + r)^n
+\]
+\textbf{Present Value:}
+\[
+  PV = \frac{FV}{(1 + r)^n}
+\]
+where $r$ = discount rate (required return), $n$ = number of periods.
+\end{formulabox}
+
+\begin{examplebox}
+If you expect to receive \$1{,}000 in 3 years and your required return is 8\%:
+\[
+  PV = \frac{1000}{(1.08)^3} = \frac{1000}{1.2597} \approx \$793.83
+\]
+You should be willing to pay at most \$793.83 today for that future \$1{,}000.
+\end{examplebox}
+
+% ────────────────────────────────────────────────────────────
+\section{Key Vocabulary to Memorise}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3.5cm} p{9.5cm}}
+\toprule
+Term & Definition \\
+\midrule
+Bull market & Sustained price increases, typically $>$20\% from trough \\
+Bear market & Sustained price declines, typically $>$20\% from peak \\
+Correction & A 10--20\% pullback from a recent high \\
+Rally & A short-term price increase within any trend \\
+Volatility & The degree of price fluctuation, often measured as standard deviation \\
+Liquidity & How easily an asset can be bought or sold without moving the price \\
+Spread & Difference between bid (buy) price and ask (sell) price \\
+Long & Owning an asset; profit if price rises \\
+Short & Borrowed and sold an asset; profit if price falls \\
+Leverage & Using borrowed money to amplify position size \\
+Margin & Collateral deposited to support a leveraged position \\
+Mark-to-market & Daily revaluation of positions at current market prices \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\warningbox{
+Leverage amplifies \emph{both} gains and losses proportionally. A 2$\times$ leveraged position
+loses 20\% when the underlying moves 10\% against you. Many beginners blow up accounts by
+misunderstanding leverage.
+}

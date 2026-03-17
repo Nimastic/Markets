@@ -1,0 +1,187 @@
+% ============================================================
+%  MODULE VI — Trading Mechanics
+% ============================================================
+
+\chapter{Trading Mechanics}
+
+% ────────────────────────────────────────────────────────────
+\section{Trading Timeframes}
+
+Different traders operate on completely different timescales with different objectives:
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3.5cm} p{3.5cm} p{6cm}}
+\toprule
+Style & Hold Period & Approach \\
+\midrule
+Scalping & Seconds -- Minutes & Tiny margins, massive volume; low retail suitability \\
+Day Trading & Intraday only & No overnight positions; requires intense focus \\
+Swing Trading & Days -- Weeks & Catch medium moves; most accessible to part-time traders \\
+Position Trading & Weeks -- Months & Trend-following; fewer decisions required \\
+Investing & Months -- Years & Fundamentals-driven; buy and hold \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{notebox}
+Most beginners should start with \textbf{swing trading or position trading}. Day trading and
+scalping require exceptional skill, fast infrastructure, and very low commissions to be
+profitable. Studies consistently show $>$70\% of day traders lose money.
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{The Trading Plan}
+
+Every trade should follow a pre-defined plan. Never trade without one.
+
+A complete trade plan defines:
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item \textbf{Setup / Thesis} — why does this trade make sense? What is the edge?
+  \item \textbf{Entry criteria} — exact conditions that trigger entry (price level, indicator, event)
+  \item \textbf{Stop loss} — where are you wrong? Maximum loss you accept on this trade.
+  \item \textbf{Target(s)} — where do you take profit? Minimum first target.
+  \item \textbf{Position size} — how many shares/contracts, given your stop and risk per trade.
+  \item \textbf{Trade management} — do you scale out? Trail a stop? Let it run?
+  \item \textbf{Invalidation} — what price/event would invalidate the entire thesis?
+\end{enumerate}
+
+% ────────────────────────────────────────────────────────────
+\section{Position Sizing}
+
+This is how much capital you allocate to a single trade. Critical for survival.
+
+\begin{formulabox}
+\textbf{Risk-based position sizing:}
+\[
+  \text{Position Size} = \frac{\text{Account Risk (\$)}}{\text{Stop Distance per Share (\$)}}
+\]
+
+\textbf{Account Risk:}
+\[
+  \text{Account Risk} = \text{Account Size} \times \text{Risk \% per Trade}
+\]
+\end{formulabox}
+
+\begin{examplebox}
+Account: \$20{,}000. Risk 1\% per trade. Entry: \$50. Stop: \$47.
+
+\[
+  \text{Account Risk} = \$20{,}000 \times 0.01 = \$200
+\]
+\[
+  \text{Stop Distance} = \$50 - \$47 = \$3
+\]
+\[
+  \text{Position Size} = \frac{\$200}{\$3} = 66 \text{ shares}
+\]
+Maximum loss on the trade = \$200, regardless of position size.
+\end{examplebox}
+
+\textbf{Common risk per trade for beginners: 0.5\%--1\%}. Professional traders often risk
+0.25\%--0.5\% per trade.
+
+% ────────────────────────────────────────────────────────────
+\section{Risk-Reward Ratio}
+
+\begin{keyterm}{Risk-Reward Ratio (RRR)}
+The ratio of potential profit to potential loss on a trade.
+\[
+  RRR = \frac{\text{Target Distance}}{\text{Stop Distance}}
+\]
+\end{keyterm}
+
+\begin{examplebox}
+Entry: \$50. Stop: \$47 (risk = \$3). Target: \$59 (reward = \$9). \\
+RRR = 9/3 = \textbf{3:1}
+\end{examplebox}
+
+With a 3:1 RRR, you only need to be right \textbf{25\% of the time} to break even.
+Most professional traders target a minimum of \textbf{2:1 or 3:1} RRR.
+
+\begin{formulabox}
+\textbf{Breakeven Win Rate:}
+\[
+  W_{\min} = \frac{1}{1 + RRR}
+\]
+At 2:1 RRR: $W_{\min} = 1/3 \approx 33\%$. At 3:1: $W_{\min} = 25\%$.
+\end{formulabox}
+
+% ────────────────────────────────────────────────────────────
+\section{Expected Value (EV)}
+
+The single most important concept for evaluating a trading strategy:
+
+\begin{formulabox}
+\[
+  EV = (P_{\text{win}} \times \text{Avg Win}) - (P_{\text{loss}} \times \text{Avg Loss})
+\]
+\end{formulabox}
+
+\begin{examplebox}
+Win rate = 40\%. Average win = \$300. Average loss = \$100.
+\[
+  EV = (0.40 \times 300) - (0.60 \times 100) = 120 - 60 = +\$60 \text{ per trade}
+\]
+This is a positive expectancy system — profitable over many repetitions.
+\end{examplebox}
+
+% ────────────────────────────────────────────────────────────
+\section{Long vs. Short Selling}
+
+\subsection{Going Long}
+Buy shares, hold, sell later at higher price. Maximum loss = 100\% of capital invested.
+Unlimited upside.
+
+\subsection{Short Selling}
+\begin{enumerate}[label=\arabic*.]
+  \item \textbf{Borrow} shares from broker (pays a borrow fee).
+  \item \textbf{Sell} those shares at current market price.
+  \item \textbf{Buy back} (``cover'') at a lower price later.
+  \item \textbf{Return} shares to lender and keep the difference.
+\end{enumerate}
+
+\begin{warningbox}
+Short selling has \textbf{theoretically unlimited risk} — a stock can rise to infinity.
+Losses are not capped. Additionally, a \textbf{short squeeze} can occur when many short sellers
+are forced to buy simultaneously, catapulting the price rapidly (e.g., GameStop 2021).
+\end{warningbox}
+
+% ────────────────────────────────────────────────────────────
+\section{Leverage and Margin}
+
+\subsection{How Margin Works}
+Margin allows you to borrow from your broker to control a larger position.
+A \textbf{2:1 margin} means you can control \$20{,}000 of assets with \$10{,}000 of capital.
+
+\subsection{Margin Call}
+If losses erode your equity below the broker's \textbf{maintenance margin requirement},
+you receive a margin call: deposit more funds or positions are forcibly liquidated —
+often at the worst possible time.
+
+\begin{warningbox}
+Leverage is not a tool for beginners. Master position sizing and risk management
+with \emph{no leverage} first. Many traders blow up accounts by using leverage
+before they have developed the discipline and edge to use it responsibly.
+\end{warningbox}
+
+% ────────────────────────────────────────────────────────────
+\section{Trading Psychology}
+
+Markets are 50\% mechanics and 50\% psychology. Common destructive patterns:
+
+\begin{itemize}
+  \item \textbf{Revenge trading} — taking impulsive trades to recover a loss immediately.
+        Almost always leads to larger losses.
+  \item \textbf{FOMO} (Fear of Missing Out) — chasing price after missing an entry.
+  \item \textbf{Letting losers run} — not respecting stop losses, hoping it will come back.
+  \item \textbf{Cutting winners short} — exiting too early out of fear of giving back gains.
+  \item \textbf{Overtrading} — taking too many trades; dilutes edge and increases commission costs.
+  \item \textbf{Confirmation bias} — seeking information that confirms your position,
+        ignoring contradictory evidence.
+\end{itemize}
+
+\begin{notebox}
+A losing trade \emph{executed according to plan} is a good trade. A winning trade taken
+outside your rules is a bad trade. \textbf{Process over outcome.} Trading is a probability game
+measured over hundreds of trades, not individual outcomes.
+\end{notebox}

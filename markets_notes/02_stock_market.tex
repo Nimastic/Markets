@@ -1,0 +1,161 @@
+% ============================================================
+%  MODULE II — The Stock Market
+% ============================================================
+
+\chapter{The Stock Market}
+
+% ────────────────────────────────────────────────────────────
+\section{What Is a Stock?}
+
+A \textbf{stock} (also called a \textbf{share} or \textbf{equity}) represents a unit of fractional
+ownership in a corporation. Shareholders are entitled to:
+
+\begin{itemize}
+  \item A proportional claim on the company's \textbf{assets} (after all liabilities are settled)
+  \item A proportional claim on future \textbf{dividends} (if declared)
+  \item \textbf{Voting rights} on major corporate decisions (depending on share class)
+  \item The ability to \textbf{sell} the share to someone else in the secondary market
+\end{itemize}
+
+\begin{keyterm}{Common vs. Preferred Stock}
+\textbf{Common stock} — standard equity with voting rights; dividends are discretionary.\\
+\textbf{Preferred stock} — typically no voting rights but has a fixed, priority dividend claim
+before common shareholders. In bankruptcy, preferred ranks above common but below debt.
+\end{keyterm}
+
+% ────────────────────────────────────────────────────────────
+\section{How Companies List on a Stock Exchange}
+
+\subsection{Initial Public Offering (IPO)}
+A private company sells shares to the public for the first time. Process:
+\begin{enumerate}[label=\arabic*.]
+  \item Company hires an \textbf{investment bank} (underwriter) to value the company and find buyers.
+  \item Underwriter sets an \textbf{offer price} and allocates shares to institutional investors.
+  \item Shares begin trading on the exchange — this is when retail investors typically get access.
+\end{enumerate}
+
+\subsection{Other Listing Methods}
+\begin{itemize}
+  \item \textbf{Direct Listing} — no new shares created; existing shareholders sell directly. No underwriter lockup. (Example: Spotify 2018)
+  \item \textbf{SPAC} (Special Purpose Acquisition Company) — a shell company lists first, then merges with a private company.
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────
+\section{Major Global Stock Exchanges}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3cm} p{3.5cm} p{6cm}}
+\toprule
+Exchange & Location & Notable Index \\
+\midrule
+NYSE & New York, USA & Dow Jones Industrial Average \\
+NASDAQ & New York, USA & NASDAQ Composite, NASDAQ 100 \\
+LSE & London, UK & FTSE 100 \\
+TSE & Tokyo, Japan & Nikkei 225 \\
+SSE & Shanghai, China & SSE Composite \\
+Euronext & Amsterdam / Paris & CAC 40, AEX \\
+SGX & Singapore & Straits Times Index (STI) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ────────────────────────────────────────────────────────────
+\section{Stock Indices}
+
+An \textbf{index} is a mathematical basket of stocks used to represent the performance
+of a market segment or the whole market.
+
+\begin{keyterm}{Index Weighting}
+\textbf{Price-weighted} — higher-priced stocks have more influence (Dow Jones, Nikkei 225).\\
+\textbf{Market cap-weighted} — stocks weighted by total market value; dominant method (S\&P 500, FTSE 100).\\
+\textbf{Equal-weighted} — each stock has the same weight regardless of size.
+\end{keyterm}
+
+\begin{formulabox}
+\textbf{Market Capitalisation:}
+\[
+  \text{Market Cap} = \text{Share Price} \times \text{Shares Outstanding}
+\]
+\end{formulabox}
+
+\subsection{The S\&P 500 — The Benchmark That Matters Most}
+The S\&P 500 tracks the 500 largest US publicly listed companies by market cap.
+It is the standard benchmark against which professional fund managers measure their performance.
+``Beating the market'' typically means outperforming the S\&P 500.
+
+% ────────────────────────────────────────────────────────────
+\section{Sectors and Industries}
+
+The \textbf{GICS} (Global Industry Classification Standard) divides the market into
+11 sectors:
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{4.5cm} p{8cm}}
+\toprule
+Sector & Examples \\
+\midrule
+Information Technology & Apple, Microsoft, NVIDIA \\
+Health Care & Johnson \& Johnson, Pfizer \\
+Financials & JPMorgan, Goldman Sachs \\
+Consumer Discretionary & Amazon, Tesla, Nike \\
+Communication Services & Alphabet (Google), Meta \\
+Industrials & Boeing, Caterpillar \\
+Consumer Staples & Procter \& Gamble, Coca-Cola \\
+Energy & ExxonMobil, Chevron \\
+Utilities & NextEra Energy \\
+Real Estate & Simon Property Group, REITs \\
+Materials & Linde, Freeport-McMoRan \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{notebox}
+Sectors rotate in and out of favour with the economic cycle. Defensive sectors (Staples, Utilities,
+Health Care) hold up better in downturns. Cyclical sectors (Technology, Discretionary, Industrials)
+outperform in expansions. This is called \textbf{sector rotation}.
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{How Stock Prices Are Determined — A First Pass}
+
+Short-term prices are set by \textbf{supply and demand} in the order book.
+Long-term prices converge toward \textbf{fundamental value} — the present value of future cash flows.
+
+The simplest valuation model is the \textbf{Gordon Growth Model} (for a dividend-paying stock):
+
+\begin{formulabox}
+\[
+  P_0 = \frac{D_1}{r - g}
+\]
+where $D_1$ = expected dividend next year, $r$ = required rate of return, $g$ = sustainable
+dividend growth rate.
+\end{formulabox}
+
+\begin{examplebox}
+A stock pays \$2 dividend, expected to grow at 4\% forever. Investors require 9\% return.
+\[
+  P_0 = \frac{2}{0.09 - 0.04} = \frac{2}{0.05} = \$40
+\]
+If the price rises above \$40, the stock is overvalued relative to this model.
+\end{examplebox}
+
+% ────────────────────────────────────────────────────────────
+\section{Corporate Actions}
+
+Events a company can take that affect its share price and structure:
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3.5cm} p{9cm}}
+\toprule
+Action & Effect \\
+\midrule
+Dividend & Cash paid to shareholders; share price falls by approximately the dividend amount on ex-date \\
+Stock Split & More shares at lower price; no change to market cap (e.g., 2-for-1 split) \\
+Reverse Split & Fewer shares at higher price; often signals distress \\
+Share Buyback & Company purchases its own shares; reduces float, typically boosts EPS \\
+Rights Issue & New shares sold to existing holders at a discount; dilutes existing shareholders \\
+M\&A & Merger or acquisition; target often trades up to bid price \\
+Spin-off & Division separated into independent public company \\
+\bottomrule
+\end{tabular}
+\end{center}

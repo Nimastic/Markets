@@ -1,0 +1,170 @@
+% ============================================================
+%  MODULE VII — Risk Management
+% ============================================================
+
+\chapter{Risk Management}
+
+\begin{notebox}
+\textbf{Risk management is what keeps you in the game.} Every professional trader's primary
+goal is capital preservation — the ability to keep playing. Edge compounds over time only
+if you survive the drawdowns. The best entry signal in the world is worthless without a
+disciplined risk framework.
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{Drawdown}
+
+\begin{keyterm}{Drawdown (DD)}
+The peak-to-trough decline in portfolio value, expressed as a percentage.
+\[
+  DD = \frac{P_{\text{peak}} - P_{\text{trough}}}{P_{\text{peak}}} \times 100\%
+\]
+A 50\% drawdown requires a \textbf{100\% return} just to get back to breakeven.
+\end{keyterm}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3.5cm} p{4cm} p{5cm}}
+\toprule
+Loss & Recovery Required & Implied Effect \\
+\midrule
+10\% & 11.1\% & Manageable \\
+20\% & 25.0\% & Uncomfortable \\
+30\% & 42.9\% & Serious \\
+40\% & 66.7\% & Very serious \\
+50\% & 100.0\% & Account in crisis \\
+75\% & 300.0\% & Near impossible \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This is why limiting drawdowns is more important than maximising returns.
+
+% ────────────────────────────────────────────────────────────
+\section{Portfolio-Level Risk Rules}
+
+\subsection{Daily / Weekly Loss Limits}
+Set a \textbf{circuit breaker}: if you lose $X$\% in a day (e.g., 2\%), stop trading.
+Come back tomorrow. This prevents emotional spiralling from turning a bad day into a catastrophe.
+
+\subsection{Maximum Open Risk}
+At any given time, total open risk across all positions should be capped. Example:
+no more than 5--6\% of account at risk simultaneously.
+
+\subsection{Correlation Risk}
+Holding 10 positions in the same sector = effectively one concentrated bet.
+True diversification requires \textbf{uncorrelated} positions.
+
+% ────────────────────────────────────────────────────────────
+\section{Value at Risk (VaR)}
+
+\begin{keyterm}{Value at Risk (VaR)}
+The maximum expected loss over a given time horizon at a specified confidence level.
+``95\% 1-day VaR of \$10{,}000'' means: there is a 5\% chance of losing more than
+\$10{,}000 in one day.
+\end{keyterm}
+
+\begin{warningbox}
+VaR fails precisely when you need it most — in fat-tail events and market crises,
+correlations spike to 1 and losses exceed VaR estimates dramatically.
+The 2008 financial crisis exposed VaR's limitations. Use it as one tool, not the only tool.
+\end{warningbox}
+
+% ────────────────────────────────────────────────────────────
+\section{The Kelly Criterion}
+
+Optimal position sizing formula to maximise long-run portfolio growth.
+
+\begin{formulabox}
+\[
+  f^* = \frac{p}{a} - \frac{q}{b}
+\]
+where:
+\begin{itemize}[noitemsep]
+  \item $f^*$ = fraction of capital to risk
+  \item $p$ = probability of winning
+  \item $q$ = probability of losing $(= 1 - p)$
+  \item $b$ = net profit per unit risked (win/loss ratio)
+  \item $a$ = loss per unit risked (= 1 in standard form)
+\end{itemize}
+\end{formulabox}
+
+\begin{examplebox}
+Win rate = 55\%, Win/Loss ratio = 1.5.
+\[
+  f^* = \frac{0.55}{1} - \frac{0.45}{1.5} = 0.55 - 0.30 = 0.25 = 25\%
+\]
+Full Kelly says bet 25\% of capital. In practice, use \textbf{Half Kelly} (12.5\%) to reduce
+volatility while capturing most of the growth benefit.
+\end{examplebox}
+
+\begin{notebox}
+Kelly sizing assumes you know your true edge precisely — rarely the case in markets.
+Over-betting Kelly leads to catastrophic drawdowns. Most professional traders
+use a fraction of Kelly (25--50\%).
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{Sharpe Ratio and Performance Metrics}
+
+\begin{formulabox}
+\textbf{Sharpe Ratio:}
+\[
+  S = \frac{R_p - R_f}{\sigma_p}
+\]
+where $R_p$ = portfolio return, $R_f$ = risk-free rate, $\sigma_p$ = standard deviation of returns.
+\end{formulabox}
+
+A Sharpe Ratio of 1.0 is decent; 2.0 is very good; 3.0+ is exceptional (most quant funds target this).
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{4cm} p{8.5cm}}
+\toprule
+Metric & What It Measures \\
+\midrule
+Sharpe Ratio & Return per unit of total volatility \\
+Sortino Ratio & Like Sharpe but only penalises \emph{downside} volatility \\
+Calmar Ratio & Annualised return $\div$ Max Drawdown \\
+Win Rate & \% of trades that are profitable \\
+Profit Factor & Gross profit $\div$ Gross loss (want $>1.5$) \\
+Expectancy & Average \$ made per trade (positive = edge) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ────────────────────────────────────────────────────────────
+\section{Hedging}
+
+Reducing existing risk by taking an offsetting position.
+
+\begin{itemize}
+  \item \textbf{Long stock + Buy Put option} — limits downside loss on the stock position.
+  \item \textbf{Long stock + Short futures} — locks in a price; used by producers and large funds.
+  \item \textbf{Long equities + Long VIX calls} — hedge against volatility spikes in crises.
+  \item \textbf{Pair trade} — long one stock, short a correlated stock in same sector.
+        Removes market beta; profits from relative performance.
+\end{itemize}
+
+Hedges have a cost (premium, drag, opportunity cost). Perfect hedges eliminate profit
+as well as loss. In practice, \textbf{partial hedges} are used.
+
+% ────────────────────────────────────────────────────────────
+\section{The Trader's Ruin Problem}
+
+Even with a positive edge, a trader can go bankrupt through bad luck and poor sizing.
+
+\begin{formulabox}
+\textbf{Probability of Ruin (simplified):}
+\[
+  P(\text{ruin}) = \left(\frac{q}{p}\right)^N
+\]
+where $N$ = number of units of risk in the account, $p$ = win probability, $q$ = loss probability.
+\end{formulabox}
+
+The message: \textbf{adequate capitalisation} combined with \textbf{small risk per trade}
+dramatically reduces the probability of ruin, even in a random walk with slight positive edge.
+
+\warningbox{
+Never risk money you cannot afford to lose. Do not trade with rent money, emergency funds,
+or borrowed capital. The psychological pressure of trading money you \emph{need} destroys
+decision-making and guarantees losses.
+}

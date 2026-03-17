@@ -1,0 +1,155 @@
+\documentclass[12pt, a4paper]{report}
+
+% ─── Packages ───────────────────────────────────────────────────────────────
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{mdframed}
+\usepackage{fontenc}
+\usepackage{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% ─── Colours ────────────────────────────────────────────────────────────────
+\definecolor{darkblue}{RGB}{10, 40, 80}
+\definecolor{midblue}{RGB}{30, 90, 160}
+\definecolor{lightblue}{RGB}{220, 235, 255}
+\definecolor{gold}{RGB}{180, 140, 0}
+\definecolor{green}{RGB}{0, 130, 80}
+\definecolor{red}{RGB}{180, 30, 30}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+\definecolor{boxborder}{RGB}{100, 140, 200}
+
+% ─── Hyperref Setup ─────────────────────────────────────────────────────────
+\hypersetup{
+    colorlinks=true,
+    linkcolor=midblue,
+    urlcolor=midblue,
+    citecolor=midblue,
+    pdftitle={Financial Markets — Master Notes},
+    pdfauthor={Personal Study Notes},
+}
+
+% ─── Header / Footer ────────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{darkblue}{\textbf{Financial Markets}}}
+\fancyhead[R]{\small\textcolor{darkblue}{\leftmark}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ─── Section Formatting ─────────────────────────────────────────────────────
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{darkblue}}
+  {\chaptertitlename\ \thechapter}{10pt}{\Huge}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{midblue}}
+  {\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{darkblue}}
+  {\thesubsection}{1em}{}
+
+% ─── Custom Environments ────────────────────────────────────────────────────
+\tcbuselibrary{skins, breakable}
+
+\newtcolorbox{keyterm}[1]{
+  colback=lightblue,
+  colframe=midblue,
+  fonttitle=\bfseries\color{darkblue},
+  title=Key Term: #1,
+  breakable,
+}
+
+\newtcolorbox{notebox}{
+  colback=lightgray,
+  colframe=gold,
+  fonttitle=\bfseries,
+  title=Note,
+  breakable,
+}
+
+\newtcolorbox{warningbox}{
+  colback=red!8,
+  colframe=red,
+  fonttitle=\bfseries\color{red},
+  title=Warning / Risk,
+  breakable,
+}
+
+\newtcolorbox{examplebox}{
+  colback=green!8,
+  colframe=green,
+  fonttitle=\bfseries\color{green},
+  title=Example,
+  breakable,
+}
+
+\newtcolorbox{formulabox}{
+  colback=lightblue!60,
+  colframe=darkblue,
+  fonttitle=\bfseries\color{darkblue},
+  title=Formula,
+  breakable,
+}
+
+% ─── Document ───────────────────────────────────────────────────────────────
+\begin{document}
+
+% ── Title Page ──────────────────────────────────────────────────────────────
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+  {\fontsize{42}{50}\selectfont\bfseries\color{darkblue} Financial Markets}\\[1em]
+  {\Large\color{midblue} Master Study Notes}\\[0.5em]
+  \textcolor{gold}{\rule{10cm}{1.5pt}}\\[2em]
+  {\large\itshape From first principles to active trading}\\[3em]
+  \begin{tcolorbox}[colback=lightblue, colframe=midblue, width=10cm, halign=center]
+    \centering
+    \textbf{Modules Covered}\\[0.5em]
+    \small
+    I.\ Introduction to Financial Markets\\
+    II.\ The Stock Market\\
+    III.\ Market Participants \& Structure\\
+    IV.\ Fundamental Analysis\\
+    V.\ Technical Analysis\\
+    VI.\ Trading Mechanics\\
+    VII.\ Risk Management\\
+    VIII.\ Market Microstructure\\
+    IX.\ Macro \& Global Markets\\
+    X.\ Advanced Topics \& Next Steps
+  \end{tcolorbox}
+  \vfill
+  {\small\color{gray} Personal notes — continuously updated}
+\end{titlepage}
+
+% ── Table of Contents ───────────────────────────────────────────────────────
+\tableofcontents
+\clearpage
+
+% ── Modules (each is a separate file) ──────────────────────────────────────
+\input{sections/01_introduction}
+\input{sections/02_stock_market}
+\input{sections/03_market_participants}
+\input{sections/04_fundamental_analysis}
+\input{sections/05_technical_analysis}
+\input{sections/06_trading_mechanics}
+\input{sections/07_risk_management}
+\input{sections/08_market_microstructure}
+\input{sections/09_macro_global}
+\input{sections/10_advanced_topics}
+
+\end{document}

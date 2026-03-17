@@ -1,0 +1,129 @@
+% ============================================================
+%  MODULE III — Market Participants & Structure
+% ============================================================
+
+\chapter{Market Participants \& Structure}
+
+\begin{notebox}
+Understanding \emph{who} is in the market and \emph{why} they trade changes everything.
+Price action is the aggregate footprint of all participants acting on their different
+objectives, time horizons, and information sets.
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{The Buy Side vs. The Sell Side}
+
+\begin{keyterm}{Sell Side}
+Firms that \emph{create and sell} financial products, execute client trades, and provide
+research. They earn through commissions, spreads, and underwriting fees.\\
+Examples: Goldman Sachs, Morgan Stanley, JPMorgan (as investment banks), market makers.
+\end{keyterm}
+
+\begin{keyterm}{Buy Side}
+Firms that \emph{buy} securities with the goal of generating returns for themselves or clients.\\
+Examples: mutual funds, hedge funds, pension funds, insurance companies, endowments.
+\end{keyterm}
+
+% ────────────────────────────────────────────────────────────
+\section{Types of Market Participants}
+
+\subsection{Retail Investors}
+Individual non-professional investors. Trade through brokers (Fidelity, Schwab, Interactive
+Brokers, Robinhood). Generally small position sizes. Collectively significant but individually
+price-takers.
+
+\subsection{Institutional Investors}
+Manage large pools of capital:
+\begin{itemize}
+  \item \textbf{Mutual Funds} — pool retail money, must disclose holdings quarterly, cannot short.
+  \item \textbf{Pension Funds} — very long-duration mandates; large in bonds and equities.
+  \item \textbf{Insurance Companies} — must match asset duration to liability duration; bond-heavy.
+  \item \textbf{Endowments} — universities, foundations; long-horizon, often hold alternatives.
+  \item \textbf{Sovereign Wealth Funds} — government-owned, very large (e.g., Norway GPFG, GIC).
+\end{itemize}
+
+\subsection{Hedge Funds}
+Lightly regulated investment vehicles for sophisticated investors. Can use:
+leverage, short selling, derivatives, concentrated positions. Performance fee structure:
+typically \textbf{2 and 20} (2\% management fee + 20\% of profits).
+
+Strategies include: long/short equity, global macro, statistical arbitrage, event-driven,
+distressed credit, systematic/quant.
+
+\subsection{Market Makers}
+Provide continuous two-sided quotes (bid and ask). Profit from the \textbf{bid-ask spread}.
+Obligated to buy and sell; absorb order imbalances. Essential for market liquidity.
+Examples: Citadel Securities, Virtu Financial, Jane Street.
+
+\subsection{High-Frequency Traders (HFT)}
+Use ultra-fast execution (microseconds) and algorithmic strategies to profit from tiny,
+fleeting price inefficiencies. Controversial — seen by some as liquidity providers, by
+others as front-runners.
+
+\subsection{Central Banks}
+The Federal Reserve (US), ECB (Europe), BOJ (Japan) can buy and sell assets directly.
+Quantitative easing (QE) involves large-scale asset purchases, injecting liquidity.
+Central bank actions have outsized market impact.
+
+% ────────────────────────────────────────────────────────────
+\section{How a Trade Is Executed}
+
+The lifecycle of a typical equity trade:
+
+\begin{enumerate}[label=\textbf{Step \arabic*.}]
+  \item \textbf{Order Entry} — Investor places order via broker (market, limit, stop, etc.)
+  \item \textbf{Routing} — Broker routes to exchange, ATS (Alternative Trading System), or
+        internalises against market maker flow.
+  \item \textbf{Matching} — Order matching engine pairs buy and sell orders at a price.
+  \item \textbf{Execution} — Trade confirmed. Price and quantity locked in.
+  \item \textbf{Clearing} — Clearinghouse (e.g., DTCC in the US) becomes the counterparty to
+        both sides, managing counterparty risk.
+  \item \textbf{Settlement} — Actual transfer of securities and cash.
+        US equities: \textbf{T+1} (trade date plus one business day).
+\end{enumerate}
+
+% ────────────────────────────────────────────────────────────
+\section{Order Types}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3.5cm} p{9cm}}
+\toprule
+Order Type & Description \\
+\midrule
+Market Order & Execute immediately at best available price. Fast but no price guarantee. \\
+Limit Order & Execute only at a specified price or better. Price control but may not fill. \\
+Stop Order & Becomes a market order once a trigger price is hit. Used to cut losses. \\
+Stop-Limit & Becomes a \emph{limit} order once trigger is hit. Risk of non-fill in fast markets. \\
+Trailing Stop & Stop that moves with the price, locking in gains. \\
+Iceberg Order & Only a small portion of total size is visible; remainder is hidden. \\
+Fill or Kill & Execute the entire order immediately or cancel it entirely. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{warningbox}
+In fast-moving, illiquid, or gap-prone markets, \textbf{stop orders} can fill significantly
+worse than the trigger price (\emph{slippage}). Never assume a stop order equals a
+guaranteed exit price.
+\end{warningbox}
+
+% ────────────────────────────────────────────────────────────
+\section{Brokers and Execution Venues}
+
+\subsection{Types of Brokers}
+\begin{itemize}
+  \item \textbf{Full-service broker} — advice, research, wealth management. Higher fees.
+  \item \textbf{Discount broker} — execution only, low/zero commission. (Schwab, Fidelity, IBKR)
+  \item \textbf{Direct Access Broker} — routes directly to exchanges; used by active traders and HFT.
+        (Interactive Brokers Pro, Lightspeed, DAS Trader)
+\end{itemize}
+
+\subsection{Payment for Order Flow (PFOF)}
+Retail brokers like Robinhood route orders to market makers (e.g., Citadel Securities) in
+exchange for payment. Controversial: critics argue retail gets slightly worse execution;
+defenders say it funds zero-commission trading. \textbf{Banned in the UK and EU.}
+
+\subsection{Dark Pools}
+Private exchanges where large institutional orders are matched anonymously, away from public
+markets, to minimise \textbf{market impact}. A large sell order on a public exchange signals
+intent and can move the price adversely before execution completes.

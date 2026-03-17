@@ -1,0 +1,191 @@
+% ============================================================
+%  MODULE V — Technical Analysis
+% ============================================================
+
+\chapter{Technical Analysis}
+
+\begin{notebox}
+Technical analysis (TA) is the study of \emph{price and volume history} to forecast future
+price direction. It operates on the premise that all known information is reflected in the price,
+and that crowd psychology creates recurring, identifiable patterns.
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{Core Assumptions of Technical Analysis}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item \textbf{Price discounts everything} — market price reflects all fundamentals, sentiment,
+        and information. Analysis focuses on price itself.
+  \item \textbf{Prices move in trends} — once established, a trend tends to continue until it
+        reverses. The trend is your friend.
+  \item \textbf{History repeats} — patterns recur because human psychology is consistent.
+        Fear and greed create the same structures again and again.
+\end{enumerate}
+
+% ────────────────────────────────────────────────────────────
+\section{Chart Types}
+
+\subsection{Candlestick Charts}
+The most common chart type. Each candle represents a time period (1min, 1hr, 1day, etc.)
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3cm} p{9.5cm}}
+\toprule
+Candle Part & Meaning \\
+\midrule
+Body & Range between Open and Close price \\
+Upper Wick & Highest price reached during the period \\
+Lower Wick & Lowest price reached during the period \\
+Green / White body & Close $>$ Open (bullish period) \\
+Red / Black body & Close $<$ Open (bearish period) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Key Candlestick Patterns}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3.5cm} p{3cm} p{6cm}}
+\toprule
+Pattern & Signal & Description \\
+\midrule
+Doji & Indecision & Open $\approx$ Close; wicks on both sides \\
+Hammer & Bullish reversal & Small body at top, long lower wick \\
+Shooting Star & Bearish reversal & Small body at bottom, long upper wick \\
+Engulfing & Reversal & Second candle fully engulfs first \\
+Marubozu & Strong trend & Full body, no wicks \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ────────────────────────────────────────────────────────────
+\section{Trend Analysis}
+
+\subsection{Identifying Trends}
+\begin{itemize}
+  \item \textbf{Uptrend} — series of Higher Highs (HH) and Higher Lows (HL)
+  \item \textbf{Downtrend} — series of Lower Highs (LH) and Lower Lows (LL)
+  \item \textbf{Sideways / Ranging} — price oscillates between a ceiling and a floor
+\end{itemize}
+
+\subsection{Trendlines}
+A line connecting a series of swing lows in an uptrend (or swing highs in a downtrend).
+A break of a trendline is a potential signal of trend reversal.
+
+\subsection{Support and Resistance}
+\begin{keyterm}{Support}
+A price level where buying interest is strong enough to prevent further decline. Price has
+bounced from this level before. It is psychological ``floor''.
+\end{keyterm}
+
+\begin{keyterm}{Resistance}
+A price level where selling pressure prevents further advance. Price has been rejected here
+before. Acts as a psychological ``ceiling''.
+\end{keyterm}
+
+\begin{notebox}
+\textbf{Role Reversal}: Once broken, a support level often becomes new resistance,
+and a resistance level often becomes new support. This is one of the most reliable
+observations in all of technical analysis.
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{Moving Averages}
+
+A moving average smooths price data to reveal the underlying trend direction.
+
+\begin{formulabox}
+\textbf{Simple Moving Average (SMA):}
+\[
+  SMA_n = \frac{P_1 + P_2 + \cdots + P_n}{n}
+\]
+
+\textbf{Exponential Moving Average (EMA):}
+\[
+  EMA_t = P_t \cdot k + EMA_{t-1} \cdot (1 - k), \quad k = \frac{2}{n+1}
+\]
+EMA gives more weight to recent prices; reacts faster than SMA.
+\end{formulabox}
+
+\subsection{Common MA Periods}
+\begin{itemize}
+  \item \textbf{20 / 21 EMA} — short-term trend; used by swing traders
+  \item \textbf{50 SMA} — medium-term trend; key institutional reference
+  \item \textbf{200 SMA} — long-term trend; major bull/bear dividing line
+\end{itemize}
+
+\subsection{Moving Average Crossovers}
+\begin{itemize}
+  \item \textbf{Golden Cross} — 50 SMA crosses above 200 SMA. Bullish signal.
+  \item \textbf{Death Cross} — 50 SMA crosses below 200 SMA. Bearish signal.
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────
+\section{Key Technical Indicators}
+
+\subsection{Relative Strength Index (RSI)}
+Measures the speed and magnitude of price changes. Oscillates between 0 and 100.
+
+\begin{formulabox}
+\[
+  RSI = 100 - \frac{100}{1 + RS}, \quad RS = \frac{\text{Average Gain (14 periods)}}{\text{Average Loss (14 periods)}}
+\]
+\end{formulabox}
+
+\begin{itemize}
+  \item RSI $>$ 70: Overbought (potential sell signal)
+  \item RSI $<$ 30: Oversold (potential buy signal)
+  \item Divergence: Price makes new high but RSI does not — bearish divergence.
+\end{itemize}
+
+\subsection{MACD (Moving Average Convergence Divergence)}
+Two EMAs (12 and 26 periods) and a signal line (9-period EMA of MACD).
+\begin{itemize}
+  \item \textbf{MACD crosses above signal line} — bullish
+  \item \textbf{MACD crosses below signal line} — bearish
+  \item \textbf{Histogram} — visualises the gap between MACD and signal line
+\end{itemize}
+
+\subsection{Bollinger Bands}
+A 20-period SMA with bands $\pm 2$ standard deviations above and below.
+\begin{itemize}
+  \item Price touching upper band: potentially overbought or strong trend continuation
+  \item Price touching lower band: potentially oversold
+  \item \textbf{Squeeze}: narrow bands signal low volatility — often precedes a big move
+\end{itemize}
+
+\subsection{Volume}
+Volume validates price moves. High volume on a breakout = more convincing.
+Low volume on a rally = suspect. Watch for \textbf{volume divergence}.
+
+% ────────────────────────────────────────────────────────────
+\section{Chart Patterns}
+
+\subsection{Continuation Patterns}
+\begin{itemize}
+  \item \textbf{Flag / Pennant} — tight consolidation after a sharp move; usually resolves in trend direction
+  \item \textbf{Triangle} (ascending, descending, symmetrical) — price coiling; breakout expected
+  \item \textbf{Cup and Handle} — U-shaped recovery, small pullback, then breakout
+\end{itemize}
+
+\subsection{Reversal Patterns}
+\begin{itemize}
+  \item \textbf{Head and Shoulders} — three peaks; middle (head) is highest; neckline break = sell signal
+  \item \textbf{Inverse Head and Shoulders} — same structure inverted; neckline break = buy signal
+  \item \textbf{Double Top / Double Bottom} — price fails twice at same level; signals reversal
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────
+\section{Fibonacci Retracements}
+
+Based on the Fibonacci sequence, key retracement levels are:
+\textbf{23.6\%, 38.2\%, 50\%, 61.8\%, 78.6\%}
+
+The 61.8\% level is the ``Golden Ratio'' and is considered the most significant.
+Traders use these levels as potential support/resistance zones after a move.
+
+\begin{warningbox}
+Technical analysis is descriptive, not prescriptive. No indicator works all the time.
+Use TA as a \emph{framework for probability}, not as a crystal ball. Always combine
+with risk management; patterns fail regularly.
+\end{warningbox}

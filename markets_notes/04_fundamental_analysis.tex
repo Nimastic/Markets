@@ -1,0 +1,180 @@
+% ============================================================
+%  MODULE IV — Fundamental Analysis
+% ============================================================
+
+\chapter{Fundamental Analysis}
+
+\begin{notebox}
+Fundamental analysis asks: \textbf{what is this asset actually worth?}
+It grounds investment decisions in business reality rather than price patterns alone.
+Warren Buffett, Charlie Munger, and most long-term investors use this approach.
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{The Three Financial Statements}
+
+Every listed company publishes three core statements. Learn to read all three.
+
+\subsection{Income Statement (Profit \& Loss)}
+Shows \textbf{revenues, expenses, and profit} over a period (quarterly or annually).
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{5cm} p{7.5cm}}
+\toprule
+Line Item & What It Means \\
+\midrule
+Revenue / Sales & Total money earned from operations \\
+Cost of Goods Sold (COGS) & Direct costs of producing goods/services \\
+Gross Profit & Revenue $-$ COGS \\
+Operating Expenses (OpEx) & R\&D, SG\&A, depreciation \\
+EBIT & Earnings Before Interest and Tax \\
+EBITDA & EBIT + Depreciation + Amortisation; proxy for operating cash \\
+Net Income & Final profit after interest and tax \\
+EPS & Earnings Per Share = Net Income $\div$ Shares Outstanding \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Balance Sheet}
+A \textbf{snapshot} of what the company owns (assets) and owes (liabilities) at one moment.
+
+\begin{formulabox}
+\[
+  \text{Assets} = \text{Liabilities} + \text{Shareholders' Equity}
+\]
+This equation always holds. Equity is the residual claim.
+\end{formulabox}
+
+\subsection{Cash Flow Statement}
+Tracks \textbf{actual cash movement}, split into three activities:
+\begin{itemize}
+  \item \textbf{Operating Cash Flow (OCF)} — cash from core business. Most important signal of health.
+  \item \textbf{Investing Cash Flow} — capex, acquisitions, asset sales.
+  \item \textbf{Financing Cash Flow} — debt issuance/repayment, dividends, share buybacks.
+\end{itemize}
+
+\begin{warningbox}
+A company can show positive net income while \emph{burning cash}. Always check the
+cash flow statement. Enron's fraud persisted partly because investors ignored cash flow signals.
+\end{warningbox}
+
+% ────────────────────────────────────────────────────────────
+\section{Key Financial Ratios}
+
+\subsection{Valuation Ratios}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3cm} p{5cm} p{5cm}}
+\toprule
+Ratio & Formula & What It Tells You \\
+\midrule
+P/E & Price $\div$ EPS & How much investors pay per \$1 of earnings \\
+P/S & Market Cap $\div$ Revenue & Useful for unprofitable companies \\
+P/B & Price $\div$ Book Value per Share & Premium over net assets \\
+EV/EBITDA & Enterprise Value $\div$ EBITDA & Capital-structure-neutral valuation \\
+PEG & P/E $\div$ EPS Growth Rate & Adjusts P/E for growth \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{formulabox}
+\textbf{Enterprise Value (EV):}
+\[
+  EV = \text{Market Cap} + \text{Total Debt} - \text{Cash \& Equivalents}
+\]
+EV represents the \emph{total cost to acquire} a business.
+\end{formulabox}
+
+\subsection{Profitability Ratios}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3.5cm} p{5.5cm} p{4.5cm}}
+\toprule
+Ratio & Formula & Interpretation \\
+\midrule
+Gross Margin & Gross Profit $\div$ Revenue & Pricing power, cost efficiency \\
+Operating Margin & EBIT $\div$ Revenue & Core business profitability \\
+Net Margin & Net Income $\div$ Revenue & Bottom-line efficiency \\
+ROE & Net Income $\div$ Equity & Return on shareholders' capital \\
+ROA & Net Income $\div$ Total Assets & Asset efficiency \\
+ROIC & NOPAT $\div$ Invested Capital & True economic return on capital deployed \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Liquidity and Leverage Ratios}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3.5cm} p{5.5cm} p{4.5cm}}
+\toprule
+Ratio & Formula & Interpretation \\
+\midrule
+Current Ratio & Current Assets $\div$ Current Liabilities & Short-term solvency \\
+Quick Ratio & (Current Assets $-$ Inventory) $\div$ CL & Stricter solvency test \\
+Debt-to-Equity & Total Debt $\div$ Equity & Financial leverage \\
+Net Debt/EBITDA & Net Debt $\div$ EBITDA & Years to repay debt from operations \\
+Interest Coverage & EBIT $\div$ Interest Expense & Ability to service debt \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ────────────────────────────────────────────────────────────
+\section{Discounted Cash Flow (DCF) Valuation}
+
+The theoretical gold standard: value a company as the present value of all future free
+cash flows (FCF), discounted at the \textbf{Weighted Average Cost of Capital (WACC)}.
+
+\begin{formulabox}
+\[
+  \text{Intrinsic Value} = \sum_{t=1}^{n} \frac{FCF_t}{(1 + WACC)^t} + \frac{TV}{(1 + WACC)^n}
+\]
+where $TV$ = terminal value (value of all cash flows beyond the forecast period).
+
+\textbf{Free Cash Flow:}
+\[
+  FCF = \text{Operating Cash Flow} - \text{Capital Expenditure}
+\]
+
+\textbf{WACC:}
+\[
+  WACC = \frac{E}{V} \cdot r_e + \frac{D}{V} \cdot r_d \cdot (1 - T)
+\]
+where $E/V$ = equity weight, $D/V$ = debt weight, $r_e$ = cost of equity,
+$r_d$ = cost of debt, $T$ = tax rate.
+\end{formulabox}
+
+\begin{notebox}
+DCF is highly sensitive to assumptions — a 1\% change in WACC or growth rate can
+change the output by 30--50\%. Use it as a \emph{range}, not a precise number.
+``Garbage in, garbage out.''
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{Qualitative Factors}
+
+Numbers are necessary but not sufficient. Also assess:
+
+\begin{itemize}
+  \item \textbf{Competitive moat} — durable competitive advantage (brand, network effects,
+        switching costs, cost advantages, intangible assets). Popularised by Warren Buffett.
+  \item \textbf{Management quality} — capital allocation history, insider ownership, communication.
+  \item \textbf{Industry dynamics} — growth trajectory, competitive intensity (Porter's Five Forces).
+  \item \textbf{Regulatory risk} — antitrust, environmental, financial regulation exposure.
+  \item \textbf{Balance sheet resilience} — can the company survive a recession or industry shock?
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────
+\section{Reading Earnings Reports}
+
+Every quarter, public companies release:
+\begin{enumerate}
+  \item \textbf{Earnings Release} — headline EPS, revenue, and guidance.
+  \item \textbf{10-Q / 10-K} (US) — detailed SEC filings with full financial statements.
+  \item \textbf{Earnings Call} — management discusses results and takes analyst questions.
+\end{enumerate}
+
+\begin{notebox}
+Markets react to \textbf{surprises vs. expectations}, not absolute numbers. A company with
+great results can fall in price if the results missed consensus estimates. Track
+\textbf{EPS surprise} and \textbf{revenue surprise} alongside guidance changes.
+\end{notebox}

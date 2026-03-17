@@ -1,0 +1,172 @@
+% ============================================================
+%  MODULE VIII — Market Microstructure
+% ============================================================
+
+\chapter{Market Microstructure}
+
+\begin{notebox}
+Market microstructure is the study of how markets actually function at a mechanical level —
+order books, liquidity, price formation, and the behaviour of market participants at
+fine-grained timescales. Understanding this gives traders an edge in execution and
+helps explain ``why prices do what they do.''
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{The Order Book}
+
+The \textbf{order book} (Level 2 data) is a real-time record of all outstanding buy
+and sell limit orders at each price level.
+
+\begin{center}
+\begin{tabular}{p{3.5cm} >{\bfseries}p{3cm} p{3.5cm}}
+\toprule
+Bid (Buy) Size & Price & Ask (Sell) Size \\
+\midrule
+500 & 99.97 & \\
+1200 & 99.98 & \\
+3000 & 99.99 & \\
+\multicolumn{3}{c}{\textbf{--- SPREAD ---}} \\
+& 100.01 & 2500 \\
+& 100.02 & 1100 \\
+& 100.03 & 800 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+  \item \textbf{Bid} — highest price a buyer is willing to pay (\$99.99)
+  \item \textbf{Ask} (Offer) — lowest price a seller is willing to accept (\$100.01)
+  \item \textbf{Spread} — difference = \$0.02 in this case
+  \item \textbf{Mid price} — (Bid + Ask) / 2 = \$100.00
+  \item \textbf{Depth} — the size available at each price level
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────
+\section{Liquidity and Market Impact}
+
+\begin{keyterm}{Liquidity}
+The ease with which a security can be bought or sold without meaningfully affecting its price.
+Measured by: spread (tighter = more liquid), depth (more size = more liquid), and
+market impact (large orders moving the price).
+\end{keyterm}
+
+A \textbf{market order} eats through the order book. A large market buy order
+``walks up the book'', consuming all available ask orders until filled — each successive fill
+occurs at a higher price. This is \textbf{market impact / slippage}.
+
+\begin{notebox}
+For small retail traders, slippage is negligible on liquid large-cap stocks.
+For institutional traders executing millions of shares, market impact is a major cost.
+This is why institutions use algorithmic execution (VWAP, TWAP, Implementation Shortfall).
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{Bid-Ask Spread as a Cost}
+
+Every time you cross the spread, you pay a cost:
+
+\begin{formulabox}
+\[
+  \text{Spread Cost (round trip)} = \frac{\text{Ask} - \text{Bid}}{\text{Mid}} \times 2 \times \text{Position Value}
+\]
+\end{formulabox}
+
+For a stock with a \$0.05 spread at \$50 mid, round-trip spread cost = 0.2\%.
+At \$100{,}000 position size: \$200 per round trip — before any other cost.
+
+% ────────────────────────────────────────────────────────────
+\section{Types of Orders and the Book}
+
+\begin{itemize}
+  \item \textbf{Limit order} — added to the book; provides liquidity. Often earns a
+        \textbf{maker rebate} on exchanges.
+  \item \textbf{Market order} — removes from the book; takes liquidity. Pays a
+        \textbf{taker fee}.
+  \item \textbf{Iceberg order} — large order with only part visible; hides intent.
+  \item \textbf{Stop order} — hidden from the book; triggered and becomes market order at stop price.
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────
+\section{Price Discovery}
+
+\begin{keyterm}{Price Discovery}
+The process by which markets aggregate information from all participants into a single
+observed price. More informative prices = more efficient allocation of capital.
+\end{keyterm}
+
+Price discovery happens continuously during market hours. \textbf{Opening auctions} and
+\textbf{closing auctions} are special mechanisms that batch orders to set the open and
+close price — the most liquid moments of the trading day.
+
+\subsection{Pre-Market and After-Hours Trading}
+Trading outside regular hours (US: 9:30am--4:00pm ET). Characteristics:
+\begin{itemize}
+  \item Much lower liquidity and volume
+  \item Wider spreads
+  \item More volatile price action
+  \item Earnings releases often happen after hours or pre-market
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────
+\section{Volume Analysis}
+
+Volume is the number of shares/contracts traded in a period.
+It is the \textbf{second most important data point after price}.
+
+\begin{itemize}
+  \item \textbf{High volume breakout} — conviction; more participants validating the move.
+  \item \textbf{Low volume breakout} — suspect; may fail or reverse.
+  \item \textbf{Climax volume} — exhaustion spike; potential reversal signal.
+  \item \textbf{Volume dry-up} — lack of sellers (in uptrend) or buyers (in downtrend);
+        often precedes continuation.
+\end{itemize}
+
+\subsection{VWAP (Volume-Weighted Average Price)}
+
+\begin{formulabox}
+\[
+  VWAP = \frac{\sum (Price_i \times Volume_i)}{\sum Volume_i}
+\]
+\end{formulabox}
+
+VWAP is the average price weighted by volume. Institutional traders use it as a benchmark.
+Trading above VWAP = bullish intraday; below = bearish intraday.
+
+% ────────────────────────────────────────────────────────────
+\section{Market Regimes and Volatility}
+
+\subsection{VIX — The Fear Index}
+The \textbf{CBOE Volatility Index (VIX)} measures the market's expectation of
+30-day S\&P 500 volatility, derived from options pricing.
+
+\begin{itemize}
+  \item VIX $<$ 15: Low volatility, complacent market
+  \item VIX 15--25: Normal market
+  \item VIX 25--40: Elevated fear
+  \item VIX $>$ 40: Crisis, extreme fear (March 2020 hit 85)
+\end{itemize}
+
+\begin{notebox}
+High VIX environments have \textbf{wider spreads}, \textbf{faster moves}, and
+\textbf{larger gaps}. Position sizes should be \emph{reduced} in high volatility
+regimes to maintain constant dollar risk.
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\section{Order Flow and Tape Reading}
+
+\textbf{Order flow} refers to the \emph{real-time stream of transactions} executed in the market.
+Advanced traders read the tape (time and sales) to detect:
+
+\begin{itemize}
+  \item Aggressive buying (large market orders lifting the ask)
+  \item Aggressive selling (large orders hitting the bid)
+  \item Absorption (large hidden orders absorbing flow without price movement)
+  \item \textbf{Stop runs} — price briefly moves to known stop loss zones, triggers stops,
+        then reverses. Common manipulation tactic by larger players.
+\end{itemize}
+
+\begin{warningbox}
+Order flow analysis has a steep learning curve. Do not attempt it until you have mastered
+basic chart reading, risk management, and have consistent results on higher timeframes first.
+\end{warningbox}
