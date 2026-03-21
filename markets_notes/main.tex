@@ -71,7 +71,6 @@
   colframe=midblue,
   fonttitle=\bfseries\color{darkblue},
   title=Key Term: #1,
-  breakable,
 }
 
 \newtcolorbox{notebox}{
@@ -141,15 +140,16 @@
 \clearpage
 
 % ── Modules (each is a separate file) ──────────────────────────────────────
-\input{sections/01_introduction}
-\input{sections/02_stock_market}
-\input{sections/03_market_participants}
-\input{sections/04_fundamental_analysis}
-\input{sections/05_technical_analysis}
-\input{sections/06_trading_mechanics}
-\input{sections/07_risk_management}
-\input{sections/08_market_microstructure}
-\input{sections/09_macro_global}
-\input{sections/10_advanced_topics}
+% Note: these files live directly under this directory (no `sections/` folder).
+\input{01_introduction}
+\input{02_stock_market}
+\input{03_market_participants}
+\input{04_fundamental_analysis}
+\input{05_technical_analysis}
+\input{06_trading_mechanics}
+\input{07_risk_management}
+\input{08_market_microstructure}
+\input{09_macro_global}
+\input{10_advanced_topics}
 
 \end{document}

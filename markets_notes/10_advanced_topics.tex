@@ -54,8 +54,10 @@ Rho ($\rho$) & Sensitivity to interest rate changes. \\
   \item \textbf{Vertical Spread} — buy one option + sell another at different strike = defined risk/reward
 \end{itemize}
 
-\warningbox{Options involve leverage and time decay. Short options have unlimited or very large
-risk. Understand all mechanics before trading with real capital.}
+\begin{warningbox}
+Options involve leverage and time decay. Short options have unlimited or very large risk.
+Understand all mechanics before trading with real capital.
+\end{warningbox}
 
 % ────────────────────────────────────────────────────────────
 \section{Futures Contracts}
@@ -81,6 +83,239 @@ Key futures markets: \textbf{equity index} (S\&P 500 /ES, NASDAQ /NQ),
   \item \textbf{Backwardation}: Futures price $<$ spot price. Indicates supply tightness.
         Rolling forward generates a positive roll yield.
 \end{itemize}
+
+% ────────────────────────────────────────────────────────────
+% Term Cards / Glossary
+% ────────────────────────────────────────────────────────────
+\section{Trading Term Cards (Finance Jargon)}
+
+\subsection{Assets and Cash Markets}
+
+\begin{keyterm}{Equities}
+Stocks / shares that represent ownership in a company. If the company grows, the equity
+value can rise; if it deteriorates, it can fall.
+\\\textbf{Example:} Buying 1 share of a tech company makes you a partial owner of its
+future cash flows (via dividends and/or resale value).
+\end{keyterm}
+
+\begin{keyterm}{Fixed Income}
+Securities where returns are driven primarily by interest payments and credit quality
+(for example: government or corporate bonds). You earn coupons, and your total return
+depends on yields moving after you buy.
+\\\textbf{Example:} Buy a 5\% coupon bond; if market yields drop, the bond price can rise
+even if the coupon stays the same.
+\end{keyterm}
+
+\begin{keyterm}{FX (Foreign Exchange)}
+Trading currencies in pairs (e.g., \textbf{EUR/USD}). An FX quote is just the price of one
+currency in terms of another.
+\\\textbf{Example:} If EUR/USD moves from 1.1000 to 1.1050, EUR strengthened versus USD.
+\end{keyterm}
+
+\begin{keyterm}{Commodities}
+Raw materials (oil, gold, wheat, copper, etc.) traded directly (spot) or via derivatives
+(futures/options). Many commodities are priced in USD, so FX and macro matter a lot.
+\\\textbf{Example:} Oil prices can jump on supply disruptions; gold often responds to real
+rates and risk sentiment.
+\end{keyterm}
+
+\subsection{Derivatives}
+
+\begin{keyterm}{Futures}
+Exchange-traded, standardised contracts to buy or sell an underlying at a future date
+for a predetermined price. Futures are marked-to-market (gains/losses flow daily).
+\\\textbf{Example:} Hedge jet fuel costs for next quarter by locking in the fuel price
+via futures.
+\end{keyterm}
+
+\begin{keyterm}{Options}
+Contracts that give the holder the \textbf{right} (not obligation) to buy (call) or sell
+(put) the underlying at a \textbf{strike} price on or before expiration.
+\\\textbf{Example:} A call option benefits if the stock rises above strike; your downside
+is limited to the premium you paid.
+\end{keyterm}
+
+\begin{keyterm}{Perp Swaps (Perpetual Futures Swaps)}
+Derivative contracts with no fixed expiration date (``perpetual''). Traders typically
+use them like futures, but the contract uses \textbf{funding} to keep the perp price close
+to the relevant spot/mark price.
+\\\textbf{Example:} If BTC perp trades too high versus BTC spot, funding tends to push the perp
+back down by incentivizing more short demand.
+\end{keyterm}
+
+\begin{keyterm}{Funding Rate in Perp Swaps}
+A periodic payment exchanged between longs and shorts. The sign/magnitude is designed to
+reduce persistent price gaps (basis) between perp and spot.
+\\\textbf{Example:} If perp price trades above spot (positive premium), longs typically pay
+shorts (funding is positive for longs), discouraging over-longing.
+\end{keyterm}
+
+\begin{keyterm}{Forwards}
+OTC (custom) contracts agreeing to buy/sell an asset at a future date for a fixed price.
+Forwards are not standardized like exchange futures and therefore typically carry more
+\textbf{counterparty risk}.
+\\\textbf{Example:} A producer and airline might agree on fixed fuel pricing for next year
+via an OTC forward.
+\end{keyterm}
+
+\subsection{Position Direction and Portfolio Risk}
+
+\begin{keyterm}{Long}
+Holding a position that benefits when the underlying price rises.
+\\\textbf{Example:} Buying BTC at \$60{,}000 and selling at \$63{,}000 profits if your entry is lower
+than your exit.
+\end{keyterm}
+
+\begin{keyterm}{Short}
+Holding a position that benefits when the underlying price falls (via borrowing/selling
+or via derivatives like futures/perps).
+\\\textbf{Example:} If you short at \$100 and it falls to \$95, you profit (before fees/interest).
+\end{keyterm}
+
+\begin{keyterm}{Flat}
+No active exposure: your net position is zero (or close enough that price moves do not
+meaningfully affect your P\&L).
+\\\textbf{Example:} After closing a long and a short, you are flat and stop taking directional risk.
+\end{keyterm}
+
+\begin{keyterm}{Exposure}
+How sensitive your portfolio is to a specific risk factor (directional price moves, rates, FX,
+volatility, etc.). Think of exposure as ``how much you win/lose if the variable moves.''
+\\\textbf{Example:} Long 1 BTC means your mark-to-market moves roughly with BTC price by about 1:1
+(ignoring funding/fees).
+\end{keyterm}
+
+\begin{keyterm}{Margin}
+Collateral you post to support leveraged positions. Margin determines how much loss you
+can absorb before a forced close.
+\\\textbf{Example:} With \$1{,}000 initial margin, you might control \$10{,}000 notional (10x),
+but you only have \$1{,}000 of buffer.
+\end{keyterm}
+
+\begin{keyterm}{Leverage}
+Controlling a larger notional position relative to your posted equity/collateral.
+Leverage amplifies both gains and losses.
+\\\textbf{Example:} 10x leverage means a 1\% adverse move can cost about 10\% of your margin
+(ignoring fees and mark-price mechanics).
+\end{keyterm}
+
+\begin{keyterm}{Liquidation}
+The forced closing of a leveraged position when collateral/equity falls below the
+maintenance requirement (or the exchange's liquidation threshold).
+\\\textbf{Example:} BTC drops quickly; your margin cushion is depleted and the exchange closes you
+at the prevailing mark/liquidation price.
+\end{keyterm}
+
+\begin{keyterm}{PnL (Profit and Loss)}
+The amount you gain or lose from a trade. It can be realized (closed positions) or
+unrealized (mark-to-market on open positions).
+\\\textbf{Example:} Buy at \$100 and sell at \$110: realized P\&L is +\$10 per unit.
+\end{keyterm}
+
+\begin{keyterm}{Sharpe Ratio}
+A performance metric that rewards higher returns while penalizing volatility:
+\[
+S = \frac{R_p - R_f}{\sigma_p}
+\]
+where $R_p$ = portfolio return, $R_f$ = risk-free rate, and $\sigma_p$ = return volatility.
+\\\textbf{Example:} Two strategies both return 10\%; if one is much smoother (lower volatility),
+it tends to have a higher Sharpe.
+\end{keyterm}
+
+\begin{keyterm}{Counterparty Risk}
+Risk that the other side in a contract fails to perform (e.g., defaults on payments).
+Exchange-cleared derivatives often reduce this risk compared to OTC contracts.
+\\\textbf{Example:} An OTC forward depends on your counterparty paying/settling correctly.
+\end{keyterm}
+
+\subsection{Order Book, Execution, and Trading Costs}
+
+\begin{keyterm}{Bid}
+The highest price a buyer is willing to pay.
+\\\textbf{Example:} If the bid is \$99.90, buyers are currently willing to buy at \$99.90.
+\end{keyterm}
+
+\begin{keyterm}{Ask}
+The lowest price a seller is willing to accept.
+\\\textbf{Example:} If the ask is \$100.10, sellers are currently offering to sell at \$100.10.
+\end{keyterm}
+
+\begin{keyterm}{Spread}
+The difference between ask and bid. In liquid markets, the spread is your baseline trading
+cost (you usually pay it when you enter/exit).
+\\\textbf{Example:} Bid \$99.90, ask \$100.10: spread is \$0.20.
+\end{keyterm}
+
+\begin{keyterm}{Fill}
+When an order is executed. Orders can fill partially (some quantity filled) or fully.
+\\\textbf{Example:} Your \$10{,}000 limit buy might fill \$6{,}000 if remaining book liquidity
+doesn't reach your price.
+\end{keyterm}
+
+\begin{keyterm}{Slippage}
+The difference between the price you expected and the actual execution price, driven by
+spread, fast market moves, and your order size/impact.
+\\\textbf{Example:} You expect a fill near \$100 but the market moves and you end up filling at \$100.25.
+\end{keyterm}
+
+\begin{keyterm}{Market Order}
+An order that executes immediately at the best available prices. You prioritize speed over
+price certainty.
+\\\textbf{Example:} In a thin order book, a market buy may walk up the book.
+\end{keyterm}
+
+\begin{keyterm}{Limit Order}
+An order that executes only at your specified price or better. You prioritize price certainty over
+guaranteed fill.
+\\\textbf{Example:} A buy limit at \$99.50 won't buy if the ask never reaches \$99.50.
+\end{keyterm}
+
+\begin{keyterm}{Tick}
+The smallest allowed change in price (minimum price increment).
+\\\textbf{Example:} If tick size is 0.01 USDT on a venue, prices move in discrete steps of 0.01.
+\end{keyterm}
+
+\subsection{Market Makers, Inventory, and Crypto Basis}
+
+\begin{keyterm}{Inventory}
+The net positions market makers accumulate while providing two-sided liquidity.
+Carrying inventory creates risk if the market moves against the position.
+\\\textbf{Example:} If a market maker has sold more than bought recently, they may be net short and
+can lose if price rises.
+\end{keyterm}
+
+\begin{keyterm}{Skew}
+An asymmetry in pricing/quoting (often referring to options implied-volatility skew, or more generally
+that market makers price different strikes differently).
+\\\textbf{Example:} Downside puts can have higher implied volatility, creating a skew across strikes.
+\end{keyterm}
+
+\begin{keyterm}{Spread Capture}
+How market makers try to profit: repeatedly buying at the bid and selling at the ask.
+If execution is mostly from passive flow, this can be a steady return stream.
+\\\textbf{Example:} Earn small profits on many trades while keeping your quotes tight.
+\end{keyterm}
+
+\begin{keyterm}{Adverse Selection}
+The risk that trades hitting your quotes are informed (you get ``picked off'') rather than random.
+It can turn spread capture into losses.
+\\\textbf{Example:} You quote tightly, but sophisticated traders know price is about to move and
+your filled trades become systematically loss-making.
+\end{keyterm}
+
+\begin{keyterm}{Basis}
+The price gap between two related instruments (commonly: futures/perps vs spot).
+In crypto, basis is tightly connected to funding.
+\\\textbf{Example:} If BTC perp trades \$200 above BTC spot, positive basis creates incentive for funding
+to move the perp back toward spot.
+\end{keyterm}
+
+\begin{keyterm}{Open Interest}
+The total number of outstanding derivative contracts (not yet closed). It reflects how much positioning
+is currently ``hanging out'' in the system.
+\\\textbf{Example:} Open interest rising alongside price can indicate growing leverage; falling open interest
+can indicate deleveraging.
+\end{keyterm}
 
 % ────────────────────────────────────────────────────────────
 \section{Quantitative and Algorithmic Trading}
