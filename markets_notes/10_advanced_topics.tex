@@ -346,13 +346,211 @@ risk fitting noise. Always hold out out-of-sample data for validation.
 \end{warningbox}
 
 \subsection{Common Quant Strategies}
-\begin{itemize}
-  \item \textbf{Momentum} — buy winners, short losers over 3--12 month lookbacks
-  \item \textbf{Mean reversion} — bet on extreme deviations reverting to the mean
-  \item \textbf{Statistical arbitrage (stat-arb)} — pairs or basket mean reversion
-  \item \textbf{Trend following} — CTA style; long trending assets across all classes
-  \item \textbf{Factor investing} — exposure to value, quality, size, low-volatility factors
+
+\subsubsection{Market Making (Spread Capture)}
+
+A market maker acts as a \textbf{liquidity provider} by continuously quoting both a bid
+and an ask. The goal is not to predict direction, but to capture the \textbf{spread}
+between the two sides as other participants trade against those quotes.
+
+\begin{keyterm}{Fair Value Estimation}
+You must have a strong estimate of the asset's ``true'' price. All quotes are placed
+symmetrically (or asymmetrically) around this fair value.
+\\\textbf{Example:} If fair value is 10{,}000, you might bid 9{,}998 and ask 10{,}002,
+capturing the 4-point spread on each round-trip.
+\end{keyterm}
+
+\begin{keyterm}{Inventory Risk \& Skewing}
+The danger of accumulating too much of an asset right as its fair value crashes.
+To mitigate, market makers \textbf{skew} their quotes based on current position:
+\begin{itemize}[noitemsep]
+  \item \textbf{Long inventory} (holding too much): lower the ask to sell faster;
+        lower the bid to stop buying more.
+  \item \textbf{Short inventory} (negative position): raise the bid to buy faster;
+        raise the ask to stop selling more.
 \end{itemize}
+This dynamically rebalances the book without taking directional risk.
+\end{keyterm}
+
+\begin{warningbox}
+\textbf{Market making requires a mean-reverting asset.}
+If the underlying price trends strongly, the market maker gets run over:
+buy at 9{,}999, price drops to 9{,}900, and you are holding a depreciating
+inventory with no exit at fair value. Pure MM should only be applied to assets
+that oscillate around a stable fair value. For noisier or trending assets,
+momentum gating (see below) is required to shut off quoting when price moves
+persistently in one direction.
+\end{warningbox}
+
+\subsubsection{Arbitrage}
+
+Exploiting a definitive mispricing for a risk-free or highly probable profit, when the
+market price momentarily violates a mathematical or structural boundary.
+
+\begin{itemize}
+  \item \textbf{Absolute / Fair Value Arb:} If an asset has a locked fair value
+        (e.g., a pegged stablecoin), crossing the spread to buy at 9{,}999 or sell at
+        10{,}001 guarantees a profit. Executed aggressively via market orders.
+  \item \textbf{Aggressive Arb (Quote Snipe):} A specific execution mode where the
+        algorithm scans the live order book and \emph{hits} any ask priced below fair
+        value or any bid priced above fair value. Rather than passively waiting for
+        others to trade against your quotes, the algorithm aggressively takes
+        mispriced orders the moment they appear. No inventory is accumulated; each
+        fill is immediately profitable relative to fair value.
+  \item \textbf{Statistical Arbitrage (Pairs Trading):} Two highly correlated assets
+        (e.g., two competing stocks in the same sector). If their price spread widens
+        beyond historical norms, short the overperformer and long the underperformer,
+        betting the spread will converge. The core assumption is mean reversion of the
+        \emph{pair}, not of either asset individually.
+\end{itemize}
+
+\begin{warningbox}
+Arb opportunities are extremely short-lived in liquid markets — competing algorithms
+close them within milliseconds. Execution speed and transaction costs determine
+whether a theoretical arb is actually profitable.
+\end{warningbox}
+
+\subsubsection{Mean Reversion}
+
+The statistical assumption that an asset's price will eventually return to its
+long-term average. Prices oscillate due to temporary imbalances in supply and demand;
+the strategy profits by fading those temporary extremes.
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3.5cm} p{9cm}}
+\toprule
+Indicator & How It Is Used \\
+\midrule
+SMA / EMA & Rolling average acts as the dynamic ``fair value''. EMA reacts faster
+            to recent changes than SMA. Buy when price falls well below; sell when
+            it rises well above. The EMA update rule is:
+            $\text{EMA}_t = \alpha \cdot P_t + (1 - \alpha) \cdot \text{EMA}_{t-1}$,
+            where $\alpha \in (0,1)$ is the decay factor. A common choice is
+            $\alpha = 0.15$, giving the most recent price roughly 13\% weight and
+            decaying older prices exponentially. Smaller $\alpha$ = smoother,
+            slower-reacting average. \\
+Bollinger Bands & Upper and lower bands set at $\pm N$ standard deviations from the
+                  moving average. Buy at the lower band; sell at the upper band.
+                  Automatically adjusts thresholds for current volatility. \\
+VWAP & Volume Weighted Average Price: average price weighted by volume throughout
+       the session. Institutional benchmark for fair intraday execution; acts as
+       a mean-reversion anchor intraday. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{notebox}
+\textbf{Aggressive Take:} If price spikes dramatically away from the EMA, an algorithm
+will aggressively cross the spread (market order) to ``fade'' the spike, betting on a
+fast snapback. This is higher risk but captures more of the reversion premium.
+\end{notebox}
+
+\subsubsection{Momentum and Trend Following}
+
+The opposite of mean reversion. Momentum assumes that assets in motion tend to stay
+in motion: a breakout upward is bet to continue before any reversal occurs.
+CTA-style trend following applies this across all asset classes.
+
+\begin{keyterm}{RSI (Relative Strength Index)}
+An oscillator on a 0--100 scale measuring the speed and magnitude of recent price
+moves. $>70$ is conventionally ``overbought'' (strong upward momentum); $<30$ is
+``oversold'' (strong downward momentum). Used both as a signal and as a gate.
+\end{keyterm}
+
+\begin{keyterm}{Momentum Gating (Hybrid Use)}
+Momentum indicators are frequently used \emph{defensively} inside mean-reversion or
+market-making strategies as a gate to avoid catching a falling knife:
+\begin{itemize}[noitemsep]
+  \item \textbf{Without a gate:} Price drops sharply; mean-reversion algorithm
+        buys the ``dip''; price keeps falling; algorithm averages down; permanent
+        trend destroys the position.
+  \item \textbf{With a momentum gate:} Price drops sharply. Algorithm wants to buy,
+        but checks RSI. If RSI is at 20 (extreme downward momentum), the algorithm
+        \emph{refuses} to enter until momentum slows, avoiding the trend entirely.
+\end{itemize}
+\end{keyterm}
+
+\begin{itemize}
+  \item \textbf{Factor investing} — systematic exposure to well-documented return
+        premia: value, quality, size, low-volatility, and momentum factors.
+\end{itemize}
+
+\begin{notebox}
+\textbf{Asset Behaviour $\to$ Strategy Mapping.}
+The right strategy depends entirely on how the asset's price \emph{behaves},
+not on preference.
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{4cm} p{3.5cm} p{5.5cm}}
+\toprule
+Price Behaviour & Right Strategy & Why \\
+\midrule
+Stable, mean-reverts to known fair value &
+  Pure Market Making &
+  Earn the spread repeatedly; inventory risk is low because price returns to fair value \\
+Noisy, can trend temporarily &
+  Mean Reversion + Momentum Gate &
+  Fade extremes, but halt if RSI signals a sustained trend to avoid catching a falling knife \\
+Persistent trend &
+  Momentum / Trend Following &
+  MM and mean-reversion both lose against a trend; ride the direction instead \\
+Two correlated assets diverge &
+  Stat Arb / Pairs Trading &
+  Short the outperformer, long the underperformer; profit from convergence \\
+Definitive mispricing vs.\ fair value &
+  Aggressive Arb &
+  Hit the mispriced order immediately; no passive quoting required \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{notebox}
+
+% ────────────────────────────────────────────────────────────
+\subsection{Algorithmic Risk Management}
+
+Beyond placing trades, algorithms must protect capital \emph{systematically}. The
+following are standard safeguards implemented at the strategy level.
+
+\begin{keyterm}{Adverse Selection Protection}
+The risk that the counterparty taking your market-making quote is an informed trader
+who knows something you don't. If your bids are filled rapidly across a very short
+time window, the market is likely crashing.
+Algorithms detect this pattern and \textbf{pull remaining quotes immediately} rather
+than continuing to provide liquidity into a fast-moving adverse move.
+\end{keyterm}
+
+\begin{keyterm}{Time-of-Day Adaptation}
+Volatility and volume are not uniform across the trading session. Markets typically
+exhibit high volatility at the open and close, and lower volatility mid-session.
+Algorithms adjust spread thickness, position sizing, and participation rate based
+on the time of day to avoid being caught in abnormally wide moves.
+\end{keyterm}
+
+\begin{keyterm}{Drawdown Guards (Kill Switches)}
+Hardcoded circuit breakers that halt the algorithm entirely if realised or unrealised
+P\&L drops below a threshold. Critical for preventing runaway losses from logic bugs,
+feed issues, or extreme market events — the algorithm simply stops trading until a
+human reviews.
+\end{keyterm}
+
+\begin{keyterm}{Position Unwinding (Flattening)}
+The deliberate closing of all open positions before a predetermined time (e.g., market
+close), to avoid holding inventory through periods when the algorithm cannot react —
+overnight news gaps, weekend risk, or exchange maintenance windows.
+``Going flat'' at end-of-day is standard practice for intraday systematic strategies.
+\end{keyterm}
+
+\begin{keyterm}{State Persistence Between Ticks}
+In tick-driven or event-driven algorithms, each execution cycle may be stateless by
+default — the algorithm is called, runs, and exits, with no memory of previous ticks.
+To maintain rolling indicators (EMA, RSI, VWAP accumulators, inventory counts),
+the algorithm must \textbf{serialise its state} at the end of each cycle and
+\textbf{deserialise} it at the start of the next.
+\\\textbf{Common pattern:} Encode the state dictionary as a JSON string and write it
+to a persistent field (e.g., \texttt{traderData} in competition platforms). On the
+next tick, parse the JSON string to restore the previous EMA value, position size,
+and any other running variables before computing new signals.
+\end{keyterm}
 
 % ────────────────────────────────────────────────────────────
 \section{Behavioural Finance}

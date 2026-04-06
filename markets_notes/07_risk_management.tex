@@ -132,6 +132,106 @@ Expectancy & Average \$ made per trade (positive = edge) \\
 \end{center}
 
 % ────────────────────────────────────────────────────────────
+\subsection{Benchmark-Relative Performance Metrics}
+
+The metrics above measure performance in isolation. A separate, equally important
+question is: \emph{how did you do compared to the market?}
+A portfolio can fall 3\% on a day the market falls 5\% — that is a loss in absolute
+terms, but an outperformance in relative terms. The following metrics formalise this idea.
+
+\begin{keyterm}{Excess Return (Active Return)}
+The simplest benchmark-relative metric. It answers: by how many percentage points did
+you beat or lag the market?
+\[
+  r_{\text{excess}} = r_{\text{you}} - r_{\text{market}}
+\]
+\textbf{Example:} You are down $-3\%$ and the market is down $-5\%$:
+\[
+  -3\% - (-5\%) = +2\%
+\]
+You lost money in absolute terms, but outperformed the benchmark by 2 percentage points.
+\end{keyterm}
+
+\begin{keyterm}{Relative Return Ratio}
+A normalised ratio version, useful when returns are large and the difference alone
+can be misleading.
+\[
+  r_{\text{relative}} = \frac{1 + r_{\text{you}}}{1 + r_{\text{market}}} - 1
+\]
+\textbf{Example:} You return $-3\%$ against a market of $-5\%$:
+\[
+  \frac{0.97}{0.95} - 1 \approx +2.11\%
+\]
+Your portfolio performed about $2.1\%$ better at the level of compounded returns.
+\end{keyterm}
+
+\begin{keyterm}{Beta-Adjusted Abnormal Return}
+If your portfolio tends to move more (or less) than the market due to its intrinsic
+volatility exposure, comparing raw returns is unfair. \textbf{Beta} ($\beta$) measures
+your sensitivity: $\beta = 2$ means your portfolio typically moves twice as much as
+the index.
+\[
+  r_{\text{abnormal}} = r_{\text{you}} - \beta \cdot r_{\text{market}}
+\]
+\textbf{Example:} $\beta = 1.5$, market returns $-4\%$, you return $-4\%$:
+\[
+  -4\% - 1.5 \times (-4\%) = -4\% + 6\% = +2\%
+\]
+You were expected to fall 6\% given your beta; falling only 4\% is a 2\% positive
+abnormal return. This is the foundation of \textbf{alpha}.
+\end{keyterm}
+
+\begin{keyterm}{Capture Ratio (Upside / Downside)}
+Measures what fraction of the market's moves — up or down — your portfolio captures.
+\[
+  \text{Downside Capture} = \frac{r_{\text{you, down markets}}}{r_{\text{market, down markets}}}
+\]
+\[
+  \text{Upside Capture} = \frac{r_{\text{you, up markets}}}{r_{\text{market, up markets}}}
+\]
+A capture ratio below 1.0 on the downside is good (you lose less than the market
+during drawdowns). A ratio above 1.0 on the upside is good (you gain more than the
+market in rallies).
+
+\textbf{Example — Downside:} Market falls $-10\%$, you fall $-6\%$:
+\[
+  \frac{-6\%}{-10\%} = 0.6
+\]
+You captured only 60\% of the market's downside — good.
+
+\textbf{Example — Downside (bad):} Market falls $-10\%$, you fall $-15\%$:
+\[
+  \frac{-15\%}{-10\%} = 1.5
+\]
+You lost 50\% worse than the market.
+\end{keyterm}
+
+\begin{notebox}
+\textbf{Alpha} is the umbrella term for risk-adjusted outperformance of a benchmark.
+In its simplest form, alpha is the intercept in a regression of your returns against
+market returns:
+\[
+  r_{\text{you}} = \alpha + \beta \cdot r_{\text{market}} + \varepsilon
+\]
+Positive alpha means you generate excess return that cannot be explained by
+simply holding a leveraged position in the market.
+\end{notebox}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{4.5cm} p{7.5cm}}
+\toprule
+Metric & Best used when \ldots \\
+\midrule
+Excess return & Quick comparison; same volatility profile as benchmark \\
+Relative return ratio & Large return magnitudes; compounding matters \\
+Beta-adjusted abnormal return & Portfolio has different volatility exposure than index \\
+Downside capture ratio & Evaluating defensive quality of strategy in down markets \\
+Alpha & Full risk-adjusted, regression-based performance attribution \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ────────────────────────────────────────────────────────────
 \section{Hedging}
 
 Reducing existing risk by taking an offsetting position.
